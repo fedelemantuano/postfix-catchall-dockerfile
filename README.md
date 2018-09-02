@@ -1,5 +1,5 @@
 # postfix-catchall-dockerfile
-From @adepasquale [gist](https://gist.github.com/adepasquale/2efd04d6491b7e7be1bdced46ace09e9).
+From [@adepasquale](https://github.com/adepasquale) [gist](https://gist.github.com/adepasquale/2efd04d6491b7e7be1bdced46ace09e9).
 
 To use it, create a new instance as usual:
 
