@@ -4,7 +4,7 @@ RUN apk add --no-cache postfix postfix-pcre rsyslog logrotate
 
 COPY logrotate.d/rsyslog /etc/logrotate.d/rsyslog
 COPY postfix/master.cf /etc/postfix/master.cf
-COPY rsyslog/rsyslog.conf /etc/rsyslog.conf
+#COPY rsyslog/rsyslog.conf /etc/rsyslog.conf
 
 RUN set -ex; \
     postconf -e "myhostname=localhost"; \
