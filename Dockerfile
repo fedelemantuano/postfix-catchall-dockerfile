@@ -1,6 +1,10 @@
 FROM alpine:latest
 
-RUN apk add --no-cache postfix postfix-pcre rsyslog
+RUN apk add --no-cache postfix postfix-pcre rsyslog logrotate
+
+COPY logrotate.d/rsyslog /etc/logrotate.d/rsyslog
+COPY postfix/master.cf /etc/postfix/master.cf
+COPY rsyslog/rsyslog.conf /etc/rsyslog.conf
 
 RUN set -ex; \
     postconf -e "myhostname=localhost"; \
@@ -10,8 +14,7 @@ RUN set -ex; \
     echo "/.*/ root" > /etc/postfix/virtual; \
     postmap /etc/postfix/virtual; \
     postalias /etc/postfix/aliases; \
-    mkdir /var/mail; \
-    chmod -R +r /var/log;
+    mkdir /var/mail;
 
 EXPOSE 25
 VOLUME ["/var/mail/root"]
